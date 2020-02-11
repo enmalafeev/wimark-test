@@ -1,12 +1,23 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang="pug">
+  div#app
+    TableUsers
+    //- <!-- <div id="nav">
+    //-   <router-link to="/">Home</router-link> |
+    //-   <router-link to="/about">About</router-link>
+    //- </div>
+    //- <router-view/> -->
 </template>
+
+<script>
+import TableUsers from './components/TableUsers.vue';
+
+export default {
+  components: {
+    TableUsers,
+  },
+};
+</script>
+
 
 <style lang="scss">
 #app {
