@@ -1,6 +1,6 @@
 <template lang="pug">
   div.container
-    //- pre {{getUserSignals}}
+    //- pre {{getUsersData}}
     h1.table-users__header Table of users
     table.table.table-hover
       thead
@@ -9,22 +9,21 @@
             v-for="header in this.tableHeader"
           ) {{header}}
       tbody
-        router-link(
-          v-for="cell in getUsersData"
-          tag="tr"
-          :to='`/user-page/${cell.userData.first_name}`'
-          ).table__row
-          td {{`${cell.userData.first_name} ${cell.userData.last_name}`}}
-          td {{cell.userData.mac}}
-          td {{cell.userData.phone}}
+        TableRow(
+          v-for="row in getUsersData"
+          :userData="row")
 
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex';
+import TableRow from './TableRow.vue';
 
 export default {
   name: 'table-users',
+  components: {
+    TableRow,
+  },
   computed: {
     ...mapGetters(['getUsersData', 'getUserSignals']),
     ...mapState({
@@ -32,7 +31,9 @@ export default {
     }),
   },
   created() {
-    this.fetchData();
+    if (!this.dataUsers) {
+      this.fetchData();
+    }
   },
   methods: {
     ...mapActions(['fetchData']),

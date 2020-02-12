@@ -9,7 +9,7 @@ const serverURL = 'https://rssi.wmrk.tk/';
 
 export default new Vuex.Store({
   state: {
-    rawData: {},
+    rawData: false,
   },
   mutations: {
     fillUpData(state, response) {

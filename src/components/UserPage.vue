@@ -7,6 +7,10 @@
 
 <script>
 export default {
+  props: {
+    signals: Object,
+    default: () => {},
+  },
   methods: {
     goBack() {
       this.$router.go(-1);
