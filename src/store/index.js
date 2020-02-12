@@ -22,14 +22,14 @@ export default new Vuex.Store({
         .get(`${corsOrigin}${serverURL}`)
         .then((response) => {
           commit('fillUpData', response.data);
-          console.log('addSkill', response.data);
-        })
-        .catch((e) => console.log(e));
+        });
+      // .catch((e) => console.log(e));
     },
   },
   getters: {
-    getUsersData: (state) => state.rowData,
-  },
-  modules: {
+    getUsersData: (state) => Object.entries(state.rowData)
+      .map(([key, value]) => ({ id: key, userData: value })),
+    getUserSignals: (state, getters) => getters.getUsersData
+      .filter((item) => item.userData.signals),
   },
 });
