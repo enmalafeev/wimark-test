@@ -2,14 +2,14 @@
   div.container
     //- pre {{getUserSignals}}
     h1.table-users__header Table of users
-    table.table
+    table.table.table-hover
       thead
         tr
           th(
             v-for="header in this.tableHeader"
           ) {{header}}
       tbody
-        tr(
+        tr.table__row(
             v-for="cell in getUsersData"
           )
           td {{`${cell.userData.first_name} ${cell.userData.last_name}`}}
