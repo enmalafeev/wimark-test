@@ -9,9 +9,11 @@
             v-for="header in this.tableHeader"
           ) {{header}}
       tbody
-        tr.table__row(
-            v-for="cell in getUsersData"
-          )
+        router-link(
+          v-for="cell in getUsersData"
+          tag="tr"
+          :to='`/user-page/${cell.userData.first_name}`'
+          ).table__row
           td {{`${cell.userData.first_name} ${cell.userData.last_name}`}}
           td {{cell.userData.mac}}
           td {{cell.userData.phone}}
@@ -26,7 +28,7 @@ export default {
   computed: {
     ...mapGetters(['getUsersData', 'getUserSignals']),
     ...mapState({
-      dataUsers: (state) => state.data,
+      dataUsers: (state) => state.rawData,
     }),
   },
   created() {

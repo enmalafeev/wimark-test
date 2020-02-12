@@ -9,11 +9,11 @@ const serverURL = 'https://rssi.wmrk.tk/';
 
 export default new Vuex.Store({
   state: {
-    rowData: {},
+    rawData: {},
   },
   mutations: {
     fillUpData(state, response) {
-      state.rowData = response;
+      state.rawData = response;
     },
   },
   actions: {
@@ -27,9 +27,9 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    getUsersData: (state) => Object.entries(state.rowData)
+    getUsersData: (state) => Object.entries(state.rawData)
       .map(([key, value]) => ({ id: key, userData: value })),
     getUserSignals: (state, getters) => getters.getUsersData
-      .filter((item) => item.userData.signals),
+      .map(({ id, userData }) => ({ id, signals: userData.signals })),
   },
 });
