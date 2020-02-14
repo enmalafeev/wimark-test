@@ -55,9 +55,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.bar-chart {
-  height: 100vh;
-}
-</style>

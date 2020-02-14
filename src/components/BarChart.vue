@@ -14,8 +14,8 @@ export default {
           {
             label: 'rssi to ts',
             data: this.chartData,
-            backgroundColor: 'blue',
-            hoverBackgroundColor: 'red',
+            backgroundColor: '#007BFE',
+            hoverBackgroundColor: '#FFDE40',
           },
         ],
       },
