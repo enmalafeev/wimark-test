@@ -6,6 +6,10 @@ Vue.use(Vuex);
 
 const corsOrigin = 'http://cors-anywhere.herokuapp.com/';
 const serverURL = 'https://rssi.wmrk.tk/';
+const getIsoTime = (ts) => (new Date(ts * 1000))
+  .toISOString()
+  .slice(0, 19)
+  .replace('T', ' ');
 
 export default new Vuex.Store({
   state: {
@@ -36,6 +40,6 @@ export default new Vuex.Store({
     getUserRSSI: (state, getters) => (id) => getters.getUserSignals(id)
       .map(({ rssi }) => rssi),
     getUserTS: (state, getters) => (id) => getters.getUserSignals(id)
-      .map(({ ts }) => ts),
+      .map(({ ts }) => getIsoTime(ts)),
   },
 });
