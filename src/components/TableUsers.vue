@@ -1,6 +1,5 @@
 <template lang="pug">
   div.container
-    //- pre {{getUsersData}}
     h1.table-users__header Table of users
     table.table.table-hover
       thead

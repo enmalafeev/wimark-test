@@ -2,14 +2,17 @@
   div.container
     h1 {{$route.params.id}} Page
     button(@click="goBack") Назад
-    //- pre {{getUserSignals($route.params.id)}}
+    //- pre {{getUserTS($route.params.id)}}
     BarChart(
-      :chart-data="getUserSignals($route.params.id)"
-      :options="this.options")
+      v-if="loaded"
+      :chart-labels="getUserTS($route.params.id)"
+      :chart-data="getUserRSSI($route.params.id)"
+      :options="this.options"
+    ).bar-chart
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import BarChart from './BarChart.vue';
 
 export default {
@@ -23,11 +26,28 @@ export default {
         tooltips: {
           backgroundColor: '#FFF',
         },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+            },
+          }],
+        },
       },
     };
   },
   computed: {
-    ...mapGetters(['getUsersData', 'getUserSignals']),
+    ...mapGetters(
+      [
+        'getUsersData',
+        'getUserSignals',
+        'getUserRSSI',
+        'getUserTS',
+      ],
+    ),
+    ...mapState({
+      loaded: (state) => state.loaded,
+    }),
   },
   methods: {
     goBack() {
@@ -36,3 +56,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.bar-chart {
+  height: 100vh;
+}
+</style>

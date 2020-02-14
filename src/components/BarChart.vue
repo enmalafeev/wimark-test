@@ -5,16 +5,16 @@ import { mapGetters } from 'vuex';
 export default {
   extends: Bar,
   mixins: [mixins.reactiveProp],
-  props: ['chartData', 'options'],
-
+  props: ['chartLabels', 'chartData', 'options'],
   mounted() {
     this.renderChart(
       {
-        // labels: this.chartLabels,
+        labels: this.chartLabels,
         datasets: [
           {
+            label: 'rssi to ts',
             data: this.chartData,
-            backgroundColor: 'red',
+            backgroundColor: 'blue',
             hoverBackgroundColor: 'red',
           },
         ],
@@ -23,15 +23,7 @@ export default {
     );
   },
   computed: {
-    ...mapGetters(['getUserSignals']),
+    ...mapGetters(['getUserSignals', 'getUserRSSI', 'getUserTS']),
   },
-  // watch: {
-  //   chartData() {
-  //     this.$data._chart.update();
-  //   },
-  //   chartLabel() {
-  //     this.$data._chart.update();
-  //   },
-  // },
 };
 </script>

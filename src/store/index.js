@@ -10,6 +10,7 @@ const serverURL = 'https://rssi.wmrk.tk/';
 export default new Vuex.Store({
   state: {
     rawData: false,
+    loaded: false,
   },
   mutations: {
     fillUpData(state, response) {
@@ -22,6 +23,7 @@ export default new Vuex.Store({
         .get(`${corsOrigin}${serverURL}`)
         .then((response) => {
           commit('fillUpData', response.data);
+          this.state.loaded = true;
         });
       // .catch((e) => console.log(e));
     },
@@ -31,5 +33,9 @@ export default new Vuex.Store({
       .map(([key, value]) => ({ id: key, userData: value })),
     getUserSignals: (state, getters) => (id) => getters.getUsersData
       .find((user) => user.id === id).userData.signals,
+    getUserRSSI: (state, getters) => (id) => getters.getUserSignals(id)
+      .map(({ rssi }) => rssi),
+    getUserTS: (state, getters) => (id) => getters.getUserSignals(id)
+      .map(({ ts }) => ts),
   },
 });
