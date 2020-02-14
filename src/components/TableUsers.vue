@@ -8,7 +8,7 @@
     div.table-users(
       v-else
     )
-      h1.table-users__header Table of users
+      h1.table-users__header Таблица пользователей
       table.table.table-hover
         thead.thead-dark
           tr
