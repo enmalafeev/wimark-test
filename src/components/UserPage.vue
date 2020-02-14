@@ -1,6 +1,6 @@
 <template lang="pug">
   div.container.mt-5
-    h1 {{$route.params.id}} Page
+    h1 {{getUserName($route.params.id)}} Page
     button.btn.btn-primary(@click="goBack") Назад
     BarChart(
       v-if="loaded"
@@ -39,6 +39,7 @@ export default {
     ...mapGetters(
       [
         'getUsersData',
+        'getUserName',
         'getUserSignals',
         'getUserRSSI',
         'getUserTS',

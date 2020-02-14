@@ -35,6 +35,8 @@ export default new Vuex.Store({
   getters: {
     getUsersData: (state) => Object.entries(state.rawData)
       .map(([key, value]) => ({ id: key, userData: value })),
+    getUserName: (state, getters) => (id) => getters.getUsersData
+      .find((user) => user.id === id).userData.first_name,
     getUserSignals: (state, getters) => (id) => getters.getUsersData
       .find((user) => user.id === id).userData.signals,
     getUserRSSI: (state, getters) => (id) => getters.getUserSignals(id)
