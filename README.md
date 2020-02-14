@@ -1,24 +1,15 @@
-# wimart-test
+# Тестовое задание для компании Wimark
 
-## Project setup
+## Ссылка на приложение
 ```
-yarn install
+(Link_to_app)[http://wimark-test.surge.sh/]
 ```
+Одностраничное SPA-приложение, получает тестовые данные пользователей с сервера.
+При загрузке данных отображается таблица со списком пользователей.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+При клике на строку таблицы происходит переход на страницу конкретного пользователя, на которой отображается график зависимости    уровня принимаемого сигнала (RSSI) от времени ts.
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Используемые технологии: Vue.js, Vue-router, Vuex, Chart.js, Pug, Axios, Bootstrap.
 
-### Lints and fixes files
-```
-yarn lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
