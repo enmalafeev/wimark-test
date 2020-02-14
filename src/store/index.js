@@ -28,8 +28,8 @@ export default new Vuex.Store({
         .then((response) => {
           commit('fillUpData', response.data);
           this.state.loaded = true;
-        });
-      // .catch((e) => console.log(e));
+        })
+        .catch((e) => alert(`Не удалось получить данные с сервера по причине ${e}. Попробуйте обновить страницу.`));
     },
   },
   getters: {
