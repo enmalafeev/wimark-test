@@ -35,9 +35,7 @@ export default {
   computed: {
     ...mapGetters(
       [
-        'getUsersData',
         'getUserName',
-        'getUserSignals',
         'getUserRSSI',
         'getUserTS',
       ],
