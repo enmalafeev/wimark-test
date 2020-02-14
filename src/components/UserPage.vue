@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.container
+  div.container.mt-5
     h1 {{$route.params.id}} Page
     button.btn.btn-primary(@click="goBack") Назад
     BarChart(

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.container
+  div.container.mt-5
     div.d-flex.justify-content-center.m-5(
       v-if="!loaded"
       )
@@ -10,7 +10,7 @@
     )
       h1.table-users__header Table of users
       table.table.table-hover
-        thead
+        thead.thead-dark
           tr
             th(
               v-for="header in this.tableHeader"
