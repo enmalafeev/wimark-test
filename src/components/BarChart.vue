@@ -1,6 +1,5 @@
 <script>
 import { Bar, mixins } from 'vue-chartjs';
-import { mapGetters } from 'vuex';
 
 export default {
   extends: Bar,
@@ -21,9 +20,6 @@ export default {
       },
       this.options,
     );
-  },
-  computed: {
-    ...mapGetters(['getUserSignals', 'getUserRSSI', 'getUserTS']),
   },
 };
 </script>
