@@ -22,9 +22,6 @@ export default {
     return {
       options: {
         responsive: true,
-        tooltips: {
-          backgroundColor: '#FFF',
-        },
         scales: {
           yAxes: [{
             ticks: {
