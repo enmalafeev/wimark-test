@@ -1,8 +1,7 @@
 <template lang="pug">
   div.container
     h1 {{$route.params.id}} Page
-    button(@click="goBack") Назад
-    //- pre {{getUserTS($route.params.id)}}
+    button.btn.btn-primary(@click="goBack") Назад
     BarChart(
       v-if="loaded"
       :chart-labels="getUserTS($route.params.id)"
