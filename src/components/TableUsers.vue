@@ -1,16 +1,24 @@
 <template lang="pug">
   div.container
-    h1.table-users__header Table of users
-    table.table.table-hover
-      thead
-        tr
-          th(
-            v-for="header in this.tableHeader"
-          ) {{header}}
-      tbody
-        TableRow(
-          v-for="row in getUsersData"
-          :userData="row")
+    div.d-flex.justify-content-center.m-5(
+      v-if="!loaded"
+      )
+      div.spinner-border.text-primary
+      span.sr-only Loading...
+    div.table-users(
+      v-else
+    )
+      h1.table-users__header Table of users
+      table.table.table-hover
+        thead
+          tr
+            th(
+              v-for="header in this.tableHeader"
+            ) {{header}}
+        tbody
+          TableRow(
+            v-for="row in getUsersData"
+            :userData="row")
 
 </template>
 
@@ -27,6 +35,7 @@ export default {
     ...mapGetters(['getUsersData', 'getUserSignals']),
     ...mapState({
       dataUsers: (state) => state.rawData,
+      loaded: (state) => state.loaded,
     }),
   },
   created() {
